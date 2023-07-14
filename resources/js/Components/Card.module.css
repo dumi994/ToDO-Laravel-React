@@ -1,0 +1,10 @@
+.taskU{
+  border-radius: 3px;
+  border:1px  solid red;
+  border-left: 5px solid red;
+}
+.taskNu{
+  border-radius: 3px;
+  border:1px  solid orange;
+  border-left: 5px solid orange
+}
