@@ -81,14 +81,14 @@ class TaskController extends Controller
         $task->description = $request->description;
         $task->deadline = $request->deadline;
         $task->status= 0;
-        
-        if($request->priority !== false && $request->priority !== 0){
-            $task->priority = 0;
-        } else {
+ 
+        if($request->priority == "on" ){
             $task->priority = 1;
+        } else {
+            $task->priority = 0;
         }
         $task->save();
-        return redirect('/tasks');
+        return redirect('/');
 
 
     }
