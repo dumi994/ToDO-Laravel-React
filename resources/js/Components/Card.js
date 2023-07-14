@@ -1,6 +1,6 @@
+import axios from 'axios';
 import React, {useState, useEffect} from 'react'
 import styles from "../Components/Card"
-import axios from 'axios';
 const Card = (props ) => {
   const tasks = props.tasks
    
