@@ -15,5 +15,5 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::get('/', [TaskController::class, 'index']);
-
+Route::get('/test', 'HomeController@index');
 Route::resource('tasks', TaskController::class);

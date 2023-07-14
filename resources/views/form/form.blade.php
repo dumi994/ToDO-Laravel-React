@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="1" name="priority" id="priority">
+      <input class="form-check-input" type="checkbox" name="priority" id="priority">
       <label class="form-check-label" for="flexCheckIndeterminate">
         Urgente
       </label>
