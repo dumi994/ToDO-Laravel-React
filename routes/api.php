@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\API\TaskController;
+use App\Http\Controllers\API\ApiTaskController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
  
-Route::get('/tasks', 'API\TaskController@index');
+/* Route::get('/api/tasks', 'API/TaskController@index'); */
+Route::resource('/tasks',  ApiTaskController::class );

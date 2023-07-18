@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="{{ url('/api-render') }}">APi render</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link </a>

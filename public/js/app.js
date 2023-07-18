@@ -2054,6 +2054,124 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/Components/ApiRender.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Components/ApiRender.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css/app.css */ "./resources/css/app.css");
+/* harmony import */ var _Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Card */ "./resources/js/Components/Card.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Form */ "./resources/js/Components/Form.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function ApiRender() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    data = _useState2[0],
+    setData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState4 = _slicedToArray(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    urgTasks = _useState6[0],
+    setUrgTasks = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    nuTasks = _useState8[0],
+    setNuTasks = _useState8[1];
+  var handleDelete = function handleDelete(deletedTaskId) {
+    // Rimuovi l'elemento cancellato dall'array delle tasks
+    setData(function (prevTasks) {
+      return prevTasks.filter(function (task) {
+        return task.id !== deletedTaskId;
+      });
+    });
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetch('http://127.0.0.1:8000/api/tasks') // Sostituisci con l'URL dell'API reale
+    .then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      setData(data);
+      setLoading(false);
+    })["catch"](function (error) {
+      console.error('Errore durante la richiesta API:', error);
+      setLoading(false);
+    });
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setUrgTasks(data.filter(function (task) {
+      return task.priority === 1;
+    }));
+    setNuTasks(data.filter(function (task) {
+      return task.priority === 0;
+    }));
+  }, [data]);
+  if (loading) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: "Caricamento in corso..."
+    });
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "container",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "col-4"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "col-8",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          id: "taskU",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "cardContainer mt-5",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              tasks: urgTasks,
+              onDelete: handleDelete
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("hr", {
+          className: "hrGray"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          id: "taskNu ",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "cardContainer mt-5",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              tasks: nuTasks
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("hr", {
+          className: "hrGray",
+          onDelete: handleDelete
+        })]
+      })]
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ApiRender);
+
+/***/ }),
+
 /***/ "./resources/js/Components/Card.js":
 /*!*****************************************!*\
   !*** ./resources/js/Components/Card.js ***!
@@ -2078,6 +2196,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var Card = function Card(props) {
   var tasks = props.tasks;
+  var handleDelete = function handleDelete(id) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]("/api/tasks/".concat(id)) // Sostituisci con l'URL dell'endpoint di cancellazione dell'elemento
+    .then(function (response) {
+      // Gestisci la risposta in base alle tue esigenze
+      console.log('Elemento cancellato con successo.');
+      onDelete(itemId); // Richiama una funzione passata come props per aggiornare lo stato dei dati nel componente padre, ad esempio rimuovendo l'elemento cancellato dalla lista.
+    })["catch"](function (error) {
+      console.error('Errore durante la cancellazione:', error);
+    });
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "row",
     children: tasks.map(function (task, i) {
@@ -2098,9 +2226,12 @@ var Card = function Card(props) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "col-2 d-flex align-items-center justify-content-around",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-            children: "X"
+            onClick: function onClick() {
+              return handleDelete(task.id);
+            },
+            children: "Xelimina"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-            children: "Y"
+            children: "Ymodifica  "
           })]
         })]
       }, i);
@@ -2108,6 +2239,95 @@ var Card = function Card(props) {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Card);
+
+/***/ }),
+
+/***/ "./resources/js/Components/Form.js":
+/*!*****************************************!*\
+  !*** ./resources/js/Components/Form.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var Form = function Form() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "container  ",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+      className: "row p-3 ",
+      method: "POST",
+      action: "{{ route('tasks.store') }}",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "form-group form-group",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+          className: "active",
+          "for": "dateStandard",
+          children: "Titolo"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          className: "form-control",
+          type: "text",
+          id: "title",
+          name: "title"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "mb-3 form-group",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+          "for": "exampleFormControlTextarea1",
+          className: "form-label ",
+          children: "Task"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
+          className: "form-control",
+          id: "newTask",
+          name: "description",
+          rows: "3"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "form-group form-group",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+          className: "active",
+          "for": "dateStandard",
+          children: "Scadenza"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          type: "date",
+          id: "deadline",
+          name: "deadline"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "form-group",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "form-check",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            className: "form-check-input",
+            type: "checkbox",
+            name: "priority",
+            id: "priority"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "form-check-label",
+            "for": "flexCheckIndeterminate",
+            children: "Urgente"
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "col-12",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          type: "submit",
+          className: "btn btn-primary",
+          children: "Aggiungi"
+        })
+      })]
+    })
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Form);
 
 /***/ }),
 
@@ -2122,33 +2342,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _Components_Card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/Card */ "./resources/js/Components/Card.js");
+/* harmony import */ var _Components_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components/Card */ "./resources/js/Components/Card.js");
+/* harmony import */ var _Components_ApiRender__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/ApiRender */ "./resources/js/Components/ApiRender.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
+/* import { render } from 'react-dom'; */
 
 
 /* import Counter from "./Components/Counter" */
 
-/* Prendo l'elemento taskUrgente */
+/* PRENDO L'URL */
 
-var urgCards = document.getElementById('taskU');
-var tasksUrgJson = document.getElementById('taskU').getAttribute('data-tasks-urg');
-var tasksUrg = JSON.parse(tasksUrgJson);
-(0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(urgCards).render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Card__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  tasks: tasksUrg
-}));
+function getCurrentURL() {
+  return window.location.href;
+}
+var ural = getCurrentURL();
+if (ural === "http://127.0.0.1:8000/") {
+  /* Prendo l'elemento taskUrgente */
+  var urgCards = document.getElementById('taskU');
+  var tasksUrgJson = document.getElementById('taskU').getAttribute('data-tasks-urg');
+  var tasksUrg = JSON.parse(tasksUrgJson);
+  (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(urgCards).render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    tasks: tasksUrg
+  }));
 
-/* Prendo l'elemento task non Urgente */
+  /* Prendo l'elemento task non Urgente */
 
-var nuCards = document.getElementById('taskNu');
-var tasksNuJson = document.getElementById('taskNu').getAttribute('data-tasks-Nu');
-var tasksNu = JSON.parse(tasksNuJson);
-(0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(nuCards).render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Card__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  tasks: tasksNu
-}));
+  var nuCards = document.getElementById('taskNu');
+  var tasksNuJson = document.getElementById('taskNu').getAttribute('data-tasks-Nu');
+  var tasksNu = JSON.parse(tasksNuJson);
+  (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(nuCards).render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    tasks: tasksNu
+  }));
+}
+if (ural === "http://127.0.0.1:8000/api-render") {
+  var _urgCards = document.getElementById('taskU');
+  var _nuCards = document.getElementById('taskNu');
+
+  /* Renderizzo API */
+  var APdata = document.getElementById('renderData');
+  (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(APdata).render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_ApiRender__WEBPACK_IMPORTED_MODULE_3__["default"], {}));
+  /* createRoot(urgCards).render(<Card />);
+  createRoot(nuCards).render(<Card />); */
+}
 
 /***/ }),
 

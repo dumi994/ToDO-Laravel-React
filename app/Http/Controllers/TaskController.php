@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
 use Illuminate\Http\Request;
 use DB;
 use DateTime;
+use App\Models\Task;
 class TaskController extends Controller
 {
     /**
