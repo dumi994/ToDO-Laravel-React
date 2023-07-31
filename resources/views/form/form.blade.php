@@ -1,5 +1,5 @@
 <div class="container  ">
-  <form class="row p-3 "  method="POST" action="{{ route('tasks.store') }}">
+  <form class="row p-3 "  method="POST" action="{{ route('store') }}">
     @csrf
     <div class="form-group form-group">
         <label class="active" for="dateStandard">Titolo</label>

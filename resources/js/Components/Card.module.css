@@ -8,3 +8,16 @@
   border:1px  solid orange;
   border-left: 5px solid orange
 }
+.deleteIcon{
+  color:red;
+}
+.deleteIcon:hover{
+  color:rgb(172, 43, 43);
+}
+.editIcon{
+  color:rgb(14, 159, 226)
+}
+.editIcon:hover{
+  color:rgb(13, 120, 170)
+}
+ 
